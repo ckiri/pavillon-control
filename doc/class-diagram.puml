@@ -1,0 +1,19 @@
+@startuml
+
+class Weather {
+- rainAmount : int
+- windSpeed : int
+- humidity : float
+- temperature : float
+}
+
+class Motor {
+- stroke : int
+- position : int
+- open()
+- close()
+}
+
+Weather -> Motor : controls
+
+@enduml
