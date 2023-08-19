@@ -1,0 +1,42 @@
+@startuml
+
+class Weather {
+__Setters__
+
+__Getters__
+- Weather getWeather();
+__
+- weather : Weather
+- rain : bool
+- windSpeed : int
+- humidity : float
+- temperature : float
+}
+
+class Motor {
+__Setters__
+- setPosition(int pos)
+- setStroke(int str)
+__Getters__
+- int getPosition()
+- int getStroke()
+--
+- stroke : int
+- position : int
+__
+- int measureStroke()
+- open()
+- close()
+}
+
+class PavillionControl {
+- void setup()
+- void loop()
+- void checkMeasurements()
+}
+
+Weather -> PavillionControl : influences
+PavillionControl -> Motor : controls
+
+
+@enduml

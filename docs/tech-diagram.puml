@@ -1,0 +1,26 @@
+@startuml
+
+!define SHOW_LEGEND
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, User, "User who wants to control the pavillion & has network access")
+
+System_Boundary(internal, "Internal System") {
+	System(mcu, "ESP8266 Node MCU, Microcontroller", "Hardware Controller, controlls the pavillion")
+	System(temp_sensor, "DHT11 Temperature & Humidity Sensor", "Hardware Sesnor, measures temperature & humidity and sends them to MCU")
+}
+
+System_Boundary(external, "External System (Homeserver)") {
+	System(ha, "Homeassistant", "User Interface for controlling the pavillion") 
+	Container(mqtt_broker, "Mosquitto, mqtt-broker", "Middleware", "Messages are published/subscribed under a topic") 
+}
+
+Rel_D(user, ha, "uses")
+Rel_D(ha, mqtt_broker, "publishes to")
+Rel_D(ha, mqtt_broker, "subscribes to")
+Rel_D(mqtt_broker, mcu, "subscribes to")
+Rel_D(mcu, mqtt_broker, "publishes to")
+Rel_D(mcu, temp_sensor, "requests data")
+Rel_D(temp_sensor, mcu, "sends data")
+
+@enduml
