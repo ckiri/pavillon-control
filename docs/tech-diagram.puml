@@ -1,26 +1,51 @@
 @startuml
-
-!define SHOW_LEGEND
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include <tupadr3/common>
+!include <tupadr3/font-awesome/server>
+!include <tupadr3/font-awesome/database>
 
-Person(user, User, "User who wants to control the pavillion & has network access")
+title Technologiediagramm Pavillion Steuerung
 
-System_Boundary(internal, "Internal System") {
-	System(mcu, "ESP8266 Node MCU, Microcontroller", "Hardware Controller, controlls the pavillion")
-	System(temp_sensor, "DHT11 Temperature & Humidity Sensor", "Hardware Sesnor, measures temperature & humidity and sends them to MCU")
+Person(user, Benutzer, "Eine Person die das Pavillion steuern will & Netzwerkzugriff hat")
+
+System_Boundary(control, "Pavillion Steuerung") {
+	System(mcu, "ESP8266 Node MCU, Microcontroller", "Hardwaresystem zum steuern des Pavillions")
+	System(temp_sensor, "DHT11 Temperatur- & Luftfeuchtigkeitssensor", "Hardwaresensor, Temperatur & Luftfeuchtigkeit. Sendet Daten an Microcontroller")
+	FA_SERVER(esp_webserver, Webserver) 
+	rectangle "Reedsensor" as reed
+	rectangle "Anemometer" as anemo
+	rectangle "Regensensor" as rain
 }
 
-System_Boundary(external, "External System (Homeserver)") {
-	System(ha, "Homeassistant", "User Interface for controlling the pavillion") 
-	Container(mqtt_broker, "Mosquitto, mqtt-broker", "Middleware", "Messages are published/subscribed under a topic") 
-}
+System_Boundary(server, "Homeserver") {
+	System(ha, "Homeassistant", "Interface zum Automatisieren und steuern des Pavillions") 
+	Container(mqtt_broker, "Mosquitto, MQTT-Broker", "Middleware", "Nachrichten werden finden sich unter einem Topic wieder, welches Teilnehmer abonnieren") 
+	FA_SERVER(ha_webserver, Webserver)
 
-Rel_D(user, ha, "uses")
-Rel_D(ha, mqtt_broker, "publishes to")
-Rel_D(ha, mqtt_broker, "subscribes to")
-Rel_D(mqtt_broker, mcu, "subscribes to")
-Rel_D(mcu, mqtt_broker, "publishes to")
-Rel_D(mcu, temp_sensor, "requests data")
-Rel_D(temp_sensor, mcu, "sends data")
+user --> esp_webserver : verwendet
+esp_webserver -- mcu
+
+user --> ha_webserver : verwendet
+ha_webserver -- ha
+
+ha --> mqtt_broker : veröffentlicht
+ha --> mqtt_broker : abonniert
+mcu --> mqtt_broker : abonniert
+mcu --> mqtt_broker : veröffentlicht
+
+mcu -left- reed 
+mcu -left- anemo
+mcu -left- rain
+mcu --> temp_sensor : frägt an
+temp_sensor --> mcu : antwortet
+
+note top of esp_webserver
+	Nur grundlegende Funktionalitäten implementieren:
+	Auf, Zu & Position
+end note
+
+note left of anemo
+	Reed-Schalter evtl. gegen Hallsensor austauschen (längere Haltbarkeit)
+end note
 
 @enduml

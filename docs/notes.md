@@ -1,4 +1,8 @@
-# Planung
+[#](#) Planung
+
+## Technologiediagramm
+
+[Technologiediagramm Pavillion Steuerung]("tech-diagram.png")
 
 ## Bauteile
 
