@@ -2,7 +2,7 @@
 
 ## Technologiediagramm
 
-[Technologiediagramm Pavillion Steuerung]("tech-diagram.png")
+![Technologiediagramm Pavillion Steuerung](tech-diagram.png)
 
 ## Bauteile
 
