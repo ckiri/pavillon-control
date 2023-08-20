@@ -12,11 +12,13 @@ System_Boundary(control, "Pavillion Steuerung") {
 	System(mcu, "ESP8266 Node MCU, Microcontroller", "Hardwaresystem zum steuern des Pavillions")
 	System(temp_sensor, "DHT11 Temperatur- & Luftfeuchtigkeitssensor", "Hardwaresensor, Temperatur & Luftfeuchtigkeit. Sendet Daten an Microcontroller")
 	FA_SERVER(esp_webserver, Webserver) 
-	note left: Nur grundlegende Funktionalitäten implementieren: Auf, Zu & Position
-	rectangle "Reedsensor" as reed
+		note left: Nur grundlegende Funktionalitäten implementieren: Auf, Zu & Position
 	rectangle "Anemometer" as anemo
-	note bottom: Reed-Schalter evtl. gegen Hallsensor austauschen (längere Haltbarkeit)
+		note bottom: Reed-Kontakt evtl. gegen Hallsensor austauschen (längere Haltbarkeit)
 	rectangle "Regensensor" as rain
+	rectangle "Reed-Kontakt" as reed
+		note left: Als Endschalter für Motor verwenden
+
 }
 
 System_Boundary(server, "Homeserver") {
