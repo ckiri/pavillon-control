@@ -4,7 +4,7 @@
 
 ### Technologiediagramm
 
-Stellt eine Übersicht der einzelnen Systeme und Komponenten da, sowie deren
+Stellt eine Übersicht der einzelnen Systeme und Komponenten dar, sowie deren
 Beziehung untereinander:
 
 ![Technologiediagramm Pavillion Steuerung](tech-diagram.png)
