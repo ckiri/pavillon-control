@@ -9,6 +9,13 @@ Beziehung untereinander:
 
 ![Technologiediagramm Pavillion Steuerung](tech-diagram.png)
 
+### Klassendiagramm
+
+Stellt Klassen und Objekte sowie deren Bezihung dar, für die Softwareimplementierung
+erstellt:
+
+![Technologiediagramm Pavillion Steuerung](class-diagram.png)
+
 ### Materialliste
 
 Bauteile die für die Steuerung benötigt werden. Komponenten ohne Preis sind

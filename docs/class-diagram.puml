@@ -1,35 +1,44 @@
 @startuml
 
-class Weather {
-__Setters__
+title Pavillion Steuerung Klassendiagramm
 
-__Getters__
-- Weather getWeather();
-__
+class Weather {
 - weather : Weather
 - rain : bool
 - windSpeed : int
 - humidity : float
 - temperature : float
+__Setters__
+- void setWeather()
+__Getters__
+- Weather getWeather()
 }
 
 class Motor {
+- int time
+- stroke : int
+- position : int
 __Setters__
 - setPosition(int pos)
 - setStroke(int str)
+- setTime(int time)
 __Getters__
 - int getPosition()
 - int getStroke()
+- int getTime()
 --
-- stroke : int
-- position : int
-__
 - int measureStroke()
 - open()
 - close()
 }
 
 class PavillionControl {
+- dateTime : DateTime
+__Setters__
+void setDateTime(DateTime dateTime)
+__Getters__
+DateTime getDateTime()
+__
 - void setup()
 - void loop()
 - void checkMeasurements()
@@ -37,6 +46,5 @@ class PavillionControl {
 
 Weather -> PavillionControl : influences
 PavillionControl -> Motor : controls
-
 
 @enduml
