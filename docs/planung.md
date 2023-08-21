@@ -11,10 +11,10 @@ Beziehung untereinander:
 
 ### Klassendiagramm
 
-Stellt Klassen und Objekte sowie deren Bezihung dar, für die Softwareimplementierung
+Stellt Klassen und Objekte sowie deren Bezihung dar. für die Softwareimplementierung
 erstellt:
 
-![Technologiediagramm Pavillion Steuerung](class-diagram.png)
+![Klassendiagramm Pavillion Steuerung](class-diagram.png)
 
 ### Materialliste
 

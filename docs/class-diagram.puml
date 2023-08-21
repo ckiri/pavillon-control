@@ -9,9 +9,17 @@ class Weather {
 - humidity : float
 - temperature : float
 __Setters__
-- void setWeather()
+- void setWeather(Weather weather)
+- void setRain(bool rain)
+- void setWindSpeed(int windSpeed)
+- void setHumidity(float humidity)
+- void setTemperature(float temperature
 __Getters__
 - Weather getWeather()
+- bool getRain()
+- int getWindSpeed()
+- float getHunidity()
+- float getTemperature()
 }
 
 class Motor {
