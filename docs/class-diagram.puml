@@ -23,12 +23,12 @@ __Getters__
 }
 
 class Motor {
-- int time
+- time : int
 - stroke : int
 - position : int
 __Setters__
-- setPosition(int pos)
-- setStroke(int str)
+- setPosition(int position)
+- setStroke(int stroke)
 - setTime(int time)
 __Getters__
 - int getPosition()
@@ -36,8 +36,8 @@ __Getters__
 - int getTime()
 --
 - int measureStroke()
-- open()
-- close()
+- void open()
+- void close()
 }
 
 class PavillionControl {
