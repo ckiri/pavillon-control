@@ -23,4 +23,5 @@ bereits vorhanden.
 | Netzteil     | 1      | Versorgung der Steuerung (min. 60W)      | ~40€  |
 | Gehäuße      | 1      | -                                        | ~15€  |
 | ESP8266 MCU  | 1      | Microcontroller zum steuern              | -     |
+| Regensensor  | 1      | Detektieren von Niederschlag             | ~6€   |
 
